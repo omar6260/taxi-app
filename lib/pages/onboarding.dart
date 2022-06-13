@@ -18,19 +18,9 @@ class _OnboardingPageState extends State<OnboardingPage> {
       body: OnBoard(
         pageController: _pageController,
         // Either Provide onSkip Callback or skipButton Widget to handle skip state
-        onSkip: () {
-          // print('skipped');
-          print("skip button pressed");
-          Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (context) => const SplashPage()));
-        },
+        onSkip: () {},
         // Either Provide onDone Callback or nextButton Widget to handle done state
-        onDone: () {
-          Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (context) => const LoginSignUp()));
-          // print('done tapped');
-          // print('onboarding done');
-        },
+        onDone: () {},
         onBoardData: onBoardData,
         titleStyles: TextStyle(
           color: Colors.yellow[700],
@@ -52,7 +42,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
         // Either Provide onSkip Callback or skipButton Widget to handle skip state
         skipButton: TextButton(
           onPressed: () {
-            // print('skipButton pressed');
+            Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (context) => const LoginSignUp()));
           },
           child: Text(
             "Passer",

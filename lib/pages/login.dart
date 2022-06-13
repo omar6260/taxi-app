@@ -72,11 +72,11 @@ class _LoginSignUpState extends State<LoginSignUp> {
           onTap: () {
             setState(() {
               signUpPage = true;
-              btnText = "SignUp";
+              btnText = "S'inscrire";
             });
           },
-          child: Text(
-            "SignUp",
+          child: const Text(
+            "S'inscrire",
             style: TextStyle(color: Colors.grey, fontSize: 25),
           ),
         ),
@@ -84,11 +84,11 @@ class _LoginSignUpState extends State<LoginSignUp> {
           onTap: () {
             setState(() {
               signUpPage = false;
-              btnText = "Login";
+              btnText = "Connexion";
             });
           },
-          child: Text(
-            "Login",
+          child: const Text(
+            "Connexion",
             style: TextStyle(color: Colors.grey, fontSize: 25),
           ),
         ),
@@ -137,7 +137,7 @@ class _LoginSignUpState extends State<LoginSignUp> {
               Icons.account_circle,
               color: Colors.yellow[700],
             ),
-            hintText: "Enter your username",
+            hintText: "Entrez votre nom d'utilisateur",
           ),
         ),
       ),
@@ -162,7 +162,7 @@ class _LoginSignUpState extends State<LoginSignUp> {
               Icons.phone,
               color: Colors.yellow[700],
             ),
-            hintText: "Enter your phone number",
+            hintText: "Entrez votre numéro de téléphone",
           ),
         ),
       ),
@@ -187,7 +187,7 @@ class _LoginSignUpState extends State<LoginSignUp> {
               Icons.email,
               color: Colors.yellow[700],
             ),
-            hintText: "Enter you Email",
+            hintText: "Entrez votre e-mail",
           ),
         ),
       ),
@@ -213,7 +213,7 @@ class _LoginSignUpState extends State<LoginSignUp> {
               Icons.lock,
               color: Colors.yellow[700],
             ),
-            hintText: "Enter you password",
+            hintText: "Entrez votre mot de passe",
           ),
         ),
       ),
@@ -245,7 +245,7 @@ class _LoginSignUpState extends State<LoginSignUp> {
         context: context,
         barrierDismissible: false,
         builder: (BuildContext context) {
-          return ProgressDialog(message: "Registering, please wait...");
+          return ProgressDialog(message: "veuillez patienter");
         });
 
     final User? user = (await _auth
@@ -287,7 +287,7 @@ class _LoginSignUpState extends State<LoginSignUp> {
         context: context,
         barrierDismissible: false,
         builder: (BuildContext context) {
-          return ProgressDialog(message: "Verifying Login, please wait...");
+          return ProgressDialog(message: "veuillez patienter");
         });
 
     final User? user = (await _auth
