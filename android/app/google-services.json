@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1088944728316",
+    "project_id": "drive-taxi-3f2be",
+    "storage_bucket": "drive-taxi-3f2be.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1088944728316:android:0d99f0dee63128e99b4f79",
+        "android_client_info": {
+          "package_name": "com.example.taxi_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1088944728316-c1k7qb7454f7io5fn34v0obt79n7jvne.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_ZtVOPWo7nfJwNEa2JP46oWBGY41BH2I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1088944728316-c1k7qb7454f7io5fn34v0obt79n7jvne.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
