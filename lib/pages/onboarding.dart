@@ -43,7 +43,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
         skipButton: TextButton(
           onPressed: () {
             Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (context) => const LoginSignUp()));
+                MaterialPageRoute(builder: (context) => LoginScreen()));
           },
           child: Text(
             "Passer",
