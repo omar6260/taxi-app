@@ -22,11 +22,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   // our form key
   final _formKey = GlobalKey<FormState>();
   // editing Controller
-  final firstNameEditingController = new TextEditingController();
-  final secondNameEditingController = new TextEditingController();
-  final emailEditingController = new TextEditingController();
-  final passwordEditingController = new TextEditingController();
-  final confirmPasswordEditingController = new TextEditingController();
+  final firstNameEditingController = TextEditingController();
+  final secondNameEditingController = TextEditingController();
+  final emailEditingController = TextEditingController();
+  final passwordEditingController = TextEditingController();
+  final confirmPasswordEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -38,10 +38,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         validator: (value) {
           RegExp regex = new RegExp(r'^.{3,}$');
           if (value!.isEmpty) {
-            return ("First Name cannot be Empty");
+            return ("Le prénom ne peut pas être vide");
           }
           if (!regex.hasMatch(value)) {
-            return ("Enter Valid name(Min. 3 Character)");
+            return ("Entrez un nom valide (Min. 3 caractères)");
           }
           return null;
         },
@@ -50,9 +50,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         },
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
-          prefixIcon: Icon(Icons.account_circle),
+          prefixIcon: Icon(Icons.account_circle, color: Colors.yellow[700]),
           contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-          hintText: "First Name",
+          hintText: "Nom",
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
           ),
@@ -65,7 +65,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         keyboardType: TextInputType.name,
         validator: (value) {
           if (value!.isEmpty) {
-            return ("Second Name cannot be Empty");
+            return ("Le deuxième nom ne peut pas être vide");
           }
           return null;
         },
@@ -74,9 +74,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         },
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
-          prefixIcon: Icon(Icons.account_circle),
+          prefixIcon: Icon(Icons.account_circle, color: Colors.yellow[700]),
           contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-          hintText: "Second Name",
+          hintText: "Prénom",
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
           ),
@@ -89,7 +89,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         keyboardType: TextInputType.emailAddress,
         validator: (value) {
           if (value!.isEmpty) {
-            return ("Please Enter Your Email");
+            return ("Veuillez entrer votre mail");
           }
           // reg expression for email validation
           if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
@@ -103,7 +103,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         },
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
-          prefixIcon: Icon(Icons.mail),
+          prefixIcon: Icon(Icons.mail, color: Colors.yellow[700]),
           contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
           hintText: "Email",
           border: OutlineInputBorder(
@@ -130,7 +130,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         },
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
-          prefixIcon: Icon(Icons.vpn_key),
+          prefixIcon: Icon(Icons.vpn_key, color: Colors.yellow[700]),
           contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
           hintText: "Mot de passe",
           border: OutlineInputBorder(
@@ -155,7 +155,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         },
         textInputAction: TextInputAction.done,
         decoration: InputDecoration(
-          prefixIcon: Icon(Icons.vpn_key),
+          prefixIcon: Icon(Icons.vpn_key, color: Colors.yellow[700]),
           contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
           hintText: "Confirmer le mot de passe",
           border: OutlineInputBorder(
@@ -208,20 +208,20 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     SizedBox(
-                        height: 130,
+                        height: 110,
                         child: Image.asset(
                           "assets/taxi.png",
                           fit: BoxFit.contain,
                         )),
-                    const SizedBox(height: 30),
+                    const SizedBox(height: 20),
                     firstNameField,
                     const SizedBox(height: 20),
                     secondNameField,
                     const SizedBox(height: 20),
                     emailField,
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     passwordField,
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     confirmPasswordField,
                     SizedBox(height: 20),
                     signUpButton,
@@ -236,6 +236,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     );
   }
 
+// register function
   void signUp(String email, String password) async {
     if (_formKey.currentState!.validate()) {
       try {
@@ -247,26 +248,28 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         });
       } on FirebaseAuthException catch (error) {
         switch (error.code) {
-          case "invalid-email":
-            errorMessage = "Your email address appears to be malformed.";
+          case "email-invalide":
+            errorMessage = "Votre adresse e-mail semble être malformée.";
+
             break;
-          case "wrong-password":
-            errorMessage = "Your password is wrong.";
+          case "mauvais mot de passe":
+            errorMessage = "Votre mot de passe est incorrect.";
             break;
-          case "user-not-found":
-            errorMessage = "User with this email doesn't exist.";
+          case "utilisateur non trouvé":
+            errorMessage = "L'utilisateur avec cet email n'existe pas.";
             break;
-          case "user-disabled":
-            errorMessage = "User with this email has been disabled.";
+          case "utilisateur désactivé":
+            errorMessage = "L'utilisateur avec cet email a été désactivé.";
             break;
-          case "too-many-requests":
-            errorMessage = "Too many requests";
+          case "trop de demandes":
+            errorMessage = "trop de demandes";
             break;
-          case "operation-not-allowed":
-            errorMessage = "Signing in with Email and Password is not enabled.";
+          case "opération-non-autorisée":
+            errorMessage =
+                "La connexion avec l'adresse électronique et le mot de passe n'est pas activée.";
             break;
           default:
-            errorMessage = "An undefined Error happened.";
+            errorMessage = "Une erreur non définie s'est produite.";
         }
         Fluttertoast.showToast(msg: errorMessage!);
         print(error.code);
@@ -294,7 +297,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         .collection("users")
         .doc(user.uid)
         .set(userModel.toMap());
-    Fluttertoast.showToast(msg: "Account created successfully :) ");
+    Fluttertoast.showToast(msg: "Compte créé avec succès :) ");
 
     Navigator.pushAndRemoveUntil(
         (context),

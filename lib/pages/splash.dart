@@ -13,12 +13,17 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
+  bool firstTimeUser = true;
+
   @override
   // ignore: must_call_super
   void initState() {
     Timer(const Duration(seconds: 5), () {
-      Navigator.pushReplacement(context,
-          MaterialPageRoute(builder: (context) => const OnboardingPage()));
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+              builder: (context) =>
+                  firstTimeUser ? OnboardingPage() : LoginScreen()));
     });
   }
 
@@ -72,3 +77,31 @@ class _SplashPageState extends State<SplashPage> {
     );
   }
 }
+/*
+_contextManager() async {
+    //check if user has data on firestore or not
+    if (FirebaseAuth.instance.currentUser != null &&
+        FirebaseAuth.instance.currentUser!.email != null) {
+      final CloudStoreDataManagement _cloudStoreDataManagement =
+          CloudStoreDataManagement();
+      final bool isDataPresent =
+          await _cloudStoreDataManagement.userRecordPresentOrNot(
+              email: FirebaseAuth.instance.currentUser!.email.toString());
+
+      ///navigate to [MainScreen] if data is present or  [TakePrimaryUserData] otherwise
+      return isDataPresent
+          ? Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (context) => const MainScreen()))
+          : Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const TakePrimaryUserData()));
+    }
+    //navigate to login screen if user is not authenticated
+    else {
+      return Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => const LoginPage()));
+    }
+  }
+}
+ */
