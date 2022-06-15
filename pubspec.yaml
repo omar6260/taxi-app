@@ -44,6 +44,8 @@ dependencies:
   flutter_onboard: ^2.0.0
   flutter_polyline_points: ^1.0.0
   fluttertoast: ^8.0.9
+  geolocator: ^7.0.1
+
 
 dev_dependencies:
   flutter_test:

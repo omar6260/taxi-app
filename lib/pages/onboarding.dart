@@ -21,6 +21,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
         onSkip: () {},
         // Either Provide onDone Callback or nextButton Widget to handle done state
         onDone: () {
+          //
           Navigator.pushReplacement(context,
               MaterialPageRoute(builder: (context) => const LoginScreen()));
         },
