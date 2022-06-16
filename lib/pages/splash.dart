@@ -2,8 +2,10 @@ import 'dart:async';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:taxi_app/pages/login.dart';
 import 'package:taxi_app/pages/onboarding.dart';
+import 'package:taxi_app/service/google_map.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -18,13 +20,8 @@ class _SplashPageState extends State<SplashPage> {
   @override
   // ignore: must_call_super
   void initState() {
-    Timer(const Duration(seconds: 5), () {
-      Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-              builder: (context) =>
-                  firstTimeUser ? OnboardingPage() : LoginScreen()));
-    });
+    super.initState();
+    startTime();
   }
 
   @override
@@ -77,31 +74,22 @@ class _SplashPageState extends State<SplashPage> {
     );
   }
 }
-/*
-_contextManager() async {
-    //check if user has data on firestore or not
-    if (FirebaseAuth.instance.currentUser != null &&
-        FirebaseAuth.instance.currentUser!.email != null) {
-      final CloudStoreDataManagement _cloudStoreDataManagement =
-          CloudStoreDataManagement();
-      final bool isDataPresent =
-          await _cloudStoreDataManagement.userRecordPresentOrNot(
-              email: FirebaseAuth.instance.currentUser!.email.toString());
 
-      ///navigate to [MainScreen] if data is present or  [TakePrimaryUserData] otherwise
-      return isDataPresent
-          ? Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (context) => const MainScreen()))
-          : Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => const TakePrimaryUserData()));
-    }
-    //navigate to login screen if user is not authenticated
-    else {
-      return Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => const LoginPage()));
-    }
+void startTime() {
+  Timer(Duration(seconds: 5), () {
+    navigatUser();
+  });
+}
+
+void navigatUser() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  var status = prefs.getBool('isLoggedIn');
+  print(status);
+  if (status == true) {
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (_) => GoogleMapService()));
+  } else {
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (_) => GoogleMapService()));
   }
 }
- */
