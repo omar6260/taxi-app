@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-
+import 'package:location/location.dart';
 import '../Screen/searchScreen.dart';
 
 class GoogleMapService extends StatefulWidget {
@@ -18,7 +18,7 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
   GoogleMapController? mapController; //contrller for Google map
   PolylinePoints polylinePoints = PolylinePoints();
 
-  String googleAPiKey = "AIzaSyBMlHqNH_EnhLrsWCPsNRK4bV1_tmIVeWM";
+  String googleAPiKey = "AIzaSyBDYanX82fCOO3bkDU9KX3xhIM89doGAEw";
 
   Set<Marker> markers = {}; //markers for google map
   Map<PolylineId, Polyline> polylines = {}; //polylines to show direction
@@ -118,7 +118,7 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "username",
+                            "nom d'utilisateur",
                             style: TextStyle(
                                 fontSize: 16.0, fontFamily: "Oumar Fall"),
                           ),
@@ -127,7 +127,7 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                           ),
                           GestureDetector(
                             onTap: () {},
-                            child: Text("Visit Profile"),
+                            child: Text("Visiter le profil"),
                           ),
                         ],
                       )
@@ -146,7 +146,7 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                 onTap: () {},
                 child: ListTile(
                   leading: Icon(Icons.history),
-                  title: Text("History"),
+                  title: Text("Historique"),
                 ),
               ),
               GestureDetector(
@@ -154,7 +154,7 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                 child: ListTile(
                   leading: Icon(Icons.person),
                   title: Text(
-                    "Visit Profile",
+                    "Visiter le profil",
                     style: TextStyle(fontSize: 15.0),
                   ),
                 ),
@@ -164,7 +164,7 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                 child: ListTile(
                   leading: Icon(Icons.info),
                   title: Text(
-                    "About",
+                    "Apropos",
                     style: TextStyle(fontSize: 15.0),
                   ),
                 ),
@@ -174,7 +174,7 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                 child: ListTile(
                   leading: Icon(Icons.logout),
                   title: Text(
-                    "Sign Out",
+                    "Se déconnecter",
                     style: TextStyle(fontSize: 15.0),
                   ),
                 ),
@@ -232,7 +232,7 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                 child: CircleAvatar(
                   backgroundColor: Colors.white,
                   child: Icon((drawerOpen) ? Icons.menu : Icons.close,
-                      color: Colors.black),
+                      color: Colors.yellow[700]),
                 ),
               )),
         ),
@@ -246,7 +246,7 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
               curve: Curves.bounceIn,
               duration: new Duration(milliseconds: 160),
               child: Container(
-                height: 300,
+                height: 280,
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
@@ -255,7 +255,7 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                     ),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black,
+                        color: Colors.grey,
                         blurRadius: 16.0,
                         spreadRadius: 0.5,
                         offset: Offset(0.7, 0.7),
@@ -282,16 +282,16 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                       ),
                       GestureDetector(
                         onTap: () async {
-                          // Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //         builder: (context) => SearchScreen()));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SearchScreen()));
                         },
                         child: Container(
                             decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(5.0),
-                              boxShadow: [
+                              boxShadow: const [
                                 BoxShadow(
                                   color: Colors.grey,
                                   blurRadius: 15.0,
@@ -305,20 +305,20 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                               child: Row(
                                 children: [
                                   Icon(Icons.search, color: Colors.yellow[700]),
-                                  SizedBox(width: 10.0),
-                                  Text("Search Drop Off"),
+                                  const SizedBox(width: 10.0),
+                                  const Text("Search Drop Off"),
                                 ],
                               ),
                             )),
                       ),
-                      SizedBox(height: 24.0),
+                      const SizedBox(height: 24.0),
                       Row(
                         children: [
                           Icon(Icons.home, color: Colors.yellow[700]),
-                          SizedBox(width: 12.0),
+                          const SizedBox(width: 12.0),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
+                            children: const [
                               Text("Add Home"),
                               SizedBox(height: 4.0),
                               Text(
@@ -330,17 +330,17 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                           )
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      Divider(),
-                      SizedBox(
+                      const Divider(),
+                      const SizedBox(
                         height: 16.0,
                       ),
                       Row(
                         children: [
                           Icon(Icons.work, color: Colors.yellow[700]),
-                          SizedBox(width: 12.0),
+                          const SizedBox(width: 12.0),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [

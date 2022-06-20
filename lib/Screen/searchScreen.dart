@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -77,7 +79,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       )
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 16.0,
                   ),
                   Row(
@@ -87,7 +89,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         height: 16.0,
                         width: 16.0,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 18.0,
                       ),
                       Expanded(
@@ -97,16 +99,16 @@ class _SearchScreenState extends State<SearchScreen> {
                             borderRadius: BorderRadius.circular(5.0),
                           ),
                           child: Padding(
-                            padding: EdgeInsets.all(3.0),
+                            padding: const EdgeInsets.all(3.0),
                             child: TextField(
                               controller: pickUpTextEditingController,
                               decoration: InputDecoration(
-                                hintText: "PickUp Location",
+                                hintText: "Lieu de prise en charge",
                                 fillColor: Colors.grey[200],
                                 filled: true,
                                 border: InputBorder.none,
                                 isDense: true,
-                                contentPadding: EdgeInsets.all(10),
+                                contentPadding: const EdgeInsets.all(10),
                               ),
                             ),
                           ),
@@ -114,7 +116,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10.0,
                   ),
                   Row(
@@ -124,7 +126,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         height: 16.0,
                         width: 16.0,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 18.0,
                       ),
                       Expanded(
@@ -134,19 +136,19 @@ class _SearchScreenState extends State<SearchScreen> {
                             borderRadius: BorderRadius.circular(5.0),
                           ),
                           child: Padding(
-                            padding: EdgeInsets.all(3.0),
+                            padding: const EdgeInsets.all(3.0),
                             child: TextField(
                               onChanged: (val) {
                                 findPlace(val);
                               },
                               controller: dropOffTextEditingController,
                               decoration: InputDecoration(
-                                hintText: "Where to?",
+                                hintText: "Où aller ?",
                                 fillColor: Colors.grey[200],
                                 filled: true,
                                 border: InputBorder.none,
                                 isDense: true,
-                                contentPadding: EdgeInsets.all(10),
+                                contentPadding: const EdgeInsets.all(10),
                               ),
                             ),
                           ),
@@ -158,25 +160,25 @@ class _SearchScreenState extends State<SearchScreen> {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
-          (placePredictionList.length > 0)
+          (placePredictionList.isNotEmpty)
               ? Expanded(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
                         vertical: 8.0, horizontal: 16),
                     child: ListView.separated(
-                      padding: EdgeInsets.all(0),
+                      padding: const EdgeInsets.all(0),
                       itemBuilder: (context, index) {
                         return PredictionTile(
                             placePredictions: placePredictionList[index]);
                       },
                       separatorBuilder: (BuildContext context, int index) =>
-                          Divider(),
+                          const Divider(),
                       itemCount: placePredictionList.length,
                       shrinkWrap: true,
-                      physics: ClampingScrollPhysics(),
+                      physics: const ClampingScrollPhysics(),
                     ),
                   ),
                 )
@@ -199,20 +201,20 @@ class PredictionTile extends StatelessWidget {
         child: Container(
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
               Row(
                 children: [
-                  Icon(Icons.add_location),
-                  SizedBox(
+                  const Icon(Icons.add_location),
+                  const SizedBox(
                     width: 14,
                   ),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           height: 8,
                         ),
                         Text(
@@ -220,7 +222,7 @@ class PredictionTile extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(fontSize: 16),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 2,
                         ),
                         Text(

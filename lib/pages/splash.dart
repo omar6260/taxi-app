@@ -20,8 +20,10 @@ class _SplashPageState extends State<SplashPage> {
   @override
   // ignore: must_call_super
   void initState() {
-    super.initState();
-    startTime();
+    Timer(const Duration(seconds: 5), () {
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (_) => GoogleMapService()));
+    });
   }
 
   @override
@@ -72,24 +74,5 @@ class _SplashPageState extends State<SplashPage> {
         ),
       ),
     );
-  }
-}
-
-void startTime() {
-  Timer(Duration(seconds: 5), () {
-    navigatUser();
-  });
-}
-
-void navigatUser() async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  var status = prefs.getBool('isLoggedIn');
-  print(status);
-  if (status == true) {
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (_) => GoogleMapService()));
-  } else {
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (_) => GoogleMapService()));
   }
 }

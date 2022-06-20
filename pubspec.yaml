@@ -46,6 +46,7 @@ dependencies:
   fluttertoast: ^8.0.9
   geolocator: ^7.0.1
   shared_preferences: ^2.0.15
+  location: ^4.4.0
 
 
 dev_dependencies:
