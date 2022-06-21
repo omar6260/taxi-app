@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:location/location.dart';
 import '../Screen/searchScreen.dart';
 
 class GoogleMapService extends StatefulWidget {
@@ -269,11 +268,11 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                     children: [
                       SizedBox(height: 6.0),
                       Text(
-                        "Hi there,",
+                        "Bonjour,",
                         style: TextStyle(fontSize: 12.0),
                       ),
                       Text(
-                        "Where to?",
+                        "Où aller ?",
                         style:
                             TextStyle(fontSize: 20.0, fontFamily: "Brand Bold"),
                       ),
@@ -306,7 +305,7 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                                 children: [
                                   Icon(Icons.search, color: Colors.yellow[700]),
                                   const SizedBox(width: 10.0),
-                                  const Text("Search Drop Off"),
+                                  const Text("Recherche"),
                                 ],
                               ),
                             )),
@@ -319,10 +318,10 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: const [
-                              Text("Add Home"),
+                              Text("Maison"),
                               SizedBox(height: 4.0),
                               Text(
-                                "Your living home address",
+                                "L'adresse de votre domicile",
                                 style: TextStyle(
                                     color: Colors.black54, fontSize: 12),
                               )
@@ -344,10 +343,10 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("Add Work"),
+                              Text("Travail"),
                               SizedBox(height: 4.0),
                               Text(
-                                "Your Office address",
+                                "Adresse de votre bureau",
                                 style: TextStyle(
                                     color: Colors.black54, fontSize: 12),
                               )

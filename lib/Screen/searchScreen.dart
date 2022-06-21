@@ -72,7 +72,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       ),
                       Center(
                         child: Text(
-                          "Set Drop Off",
+                          "Recherche",
                           style: TextStyle(
                               fontSize: 18.0, fontFamily: "Brand Bold"),
                         ),
