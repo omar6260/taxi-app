@@ -52,7 +52,7 @@ class _SearchScreenState extends State<SearchScreen> {
             height: 215.0,
             decoration: BoxDecoration(color: Colors.white, boxShadow: [
               BoxShadow(
-                  color: Colors.black,
+                  color: Colors.grey,
                   blurRadius: 6.0,
                   spreadRadius: 0.5,
                   offset: Offset(0.7, 0.7))

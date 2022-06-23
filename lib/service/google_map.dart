@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_google_places/flutter_google_places.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../Screen/searchScreen.dart';
+import '../model/key.dart';
+import 'package:google_maps_webservice/places.dart' as webservice;
 
 class GoogleMapService extends StatefulWidget {
   GoogleMapService({Key? key}) : super(key: key);
@@ -281,10 +284,33 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                       ),
                       GestureDetector(
                         onTap: () async {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => SearchScreen()));
+                          // Navigator.push(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //         builder: (context) => SearchScreen()));
+                          webservice.Prediction? p =
+                              await PlacesAutocomplete.show(
+                            context: context,
+                            apiKey: keymap,
+                            // onError: onError,
+                            mode: Mode.overlay,
+                            language: "fr",
+                            // decoration: InputDecoration(
+                            //   hintText: 'Search',
+                            //   focusedBorder: OutlineInputBorder(
+                            //     borderRadius: BorderRadius.circular(20),
+                            //     borderSide: BorderSide(
+                            //       color: Colors.white,
+                            //     ),
+                            //   ),
+                            // ),
+                            components: [
+                              webservice.Component(
+                                  webservice.Component.country, "sn")
+                            ],
+                          );
+
+                          print(p);
                         },
                         child: Container(
                             decoration: BoxDecoration(
