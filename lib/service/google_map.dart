@@ -20,7 +20,7 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
   GoogleMapController? mapController; //contrller for Google map
   PolylinePoints polylinePoints = PolylinePoints();
 
-  String googleAPiKey = "AIzaSyBDYanX82fCOO3bkDU9KX3xhIM89doGAEw";
+  String googleAPiKey = "AlzaSyDf7QzlSO86LRuKQv9xW9dPSfpcncv4uoo";
 
   Set<Marker> markers = {}; //markers for google map
   Map<PolylineId, Polyline> polylines = {}; //polylines to show direction
@@ -279,7 +279,7 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                         style:
                             TextStyle(fontSize: 20.0, fontFamily: "Brand Bold"),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       GestureDetector(
