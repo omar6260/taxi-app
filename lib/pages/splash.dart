@@ -22,7 +22,7 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     Timer(const Duration(seconds: 5), () {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (_) => GoogleMapService()));
+          context, MaterialPageRoute(builder: (_) => const OnboardingPage()));
     });
   }
 

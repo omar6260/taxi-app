@@ -69,6 +69,9 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
       travelMode: TravelMode.driving,
     );
 
+    print("my point");
+    print(result.points);
+
     if (result.points.isNotEmpty) {
       result.points.forEach((PointLatLng point) {
         polylineCoordinates.add(LatLng(point.latitude, point.longitude));
