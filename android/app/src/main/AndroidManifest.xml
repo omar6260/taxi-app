@@ -1,5 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.taxi_app">
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
    <application
         android:label="taxi_app"
         android:name="${applicationName}"
@@ -31,7 +33,7 @@
             android:name="flutterEmbedding"
             android:value="2" />
         <meta-data android:name="com.google.android.geo.API_KEY"
-               android:value="AlzaSyDf7QzlSO86LRuKQv9xW9dPSfpcncv4uoo"/>
+               android:value="AIzaSyDAMs9m7yozp_jsfJI9jaSo5bR2eBtBPWU"/>
 
         
         
