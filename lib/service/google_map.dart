@@ -22,8 +22,8 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
   GoogleMapController? mapController; //contrller for Google map
   CameraPosition? cameraPosition;
   LatLng startLocation = const LatLng(14.803739, -17.283244);
-  LatLng endLocation = const LatLng(14.7508243644, -17.3532469146);
-  String location = "Search Location";
+  LatLng? endLocation;
+  String location = "Search Locatin";
   PolylinePoints polylinePoints = PolylinePoints();
   Set<Marker> markers = Set(); //markers for google map
   Map<PolylineId, Polyline> polylines = {}; //polylines to show direction
@@ -41,20 +41,7 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
       ),
       icon: BitmapDescriptor.defaultMarker, //Icon for Marker
     ));
-
-    markers.add(Marker(
-      //add distination location marker
-      markerId: MarkerId(endLocation.toString()),
-      position: endLocation, //position of marker
-      infoWindow: InfoWindow(
-        //popup info
-        title: 'Destination Point ',
-        snippet: 'Destination Marker',
-      ),
-      icon: BitmapDescriptor.defaultMarker, //Icon for Marker
-    ));
-
-    getDirections(); //fetch direction polylines from Google API
+    //fetch direction polylines from Google API
 
     super.initState();
   }
@@ -65,7 +52,7 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
     PolylineResult result = await polylinePoints.getRouteBetweenCoordinates(
       googleApikey,
       PointLatLng(startLocation.latitude, startLocation.longitude),
-      PointLatLng(endLocation.latitude, endLocation.longitude),
+      PointLatLng(endLocation!.latitude, endLocation!.longitude),
       travelMode: TravelMode.driving,
     );
 
@@ -318,7 +305,7 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                             context: context,
                             apiKey: googleApikey,
                             mode: Mode.overlay,
-                            types: [],
+                            types: ["geocode"],
                             strictbounds: false,
                             components: [
                               webservice.Component(
@@ -344,12 +331,30 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                           final geometry = detail.result.geometry!;
                           final lat = geometry.location.lat;
                           final lang = geometry.location.lng;
-                          var newlatlang = LatLng(lat, lang);
+                          setState(() {
+                            endLocation = LatLng(lat, lang);
+
+                            markers.add(Marker(
+                              //add distination location marker
+                              markerId: MarkerId(endLocation.toString()),
+                              position: endLocation!, //position of marker
+                              infoWindow: InfoWindow(
+                                //popup info
+                                title: 'Destination Point ',
+                                snippet: 'Destination Marker',
+                              ),
+                              icon: BitmapDescriptor
+                                  .defaultMarker, //Icon for Marker
+                            ));
+
+                            getDirections();
+                          });
 
                           //move map camera to selected place with animation
-                          mapController?.animateCamera(
-                              CameraUpdate.newCameraPosition(CameraPosition(
-                                  target: newlatlang, zoom: 17)));
+                          // mapController?.animateCamera(
+                          //     CameraUpdate.newCameraPosition(CameraPosition(
+                          //         target: newlatlang, zoom: 17)));
+
                         }
                       },
                       child: Container(
