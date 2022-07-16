@@ -6,6 +6,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../Screen/searchScreen.dart';
 import '../model/key.dart';
 import 'package:google_maps_webservice/places.dart' as webservice;
+import 'dart:math';
 
 class GoogleMapService extends StatefulWidget {
   GoogleMapService({Key? key}) : super(key: key);
@@ -23,6 +24,7 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
   CameraPosition? cameraPosition;
   LatLng startLocation = const LatLng(14.803739, -17.283244);
   LatLng? endLocation;
+  double distance = 0.0;
   String location = "Search Locatin";
   PolylinePoints polylinePoints = PolylinePoints();
   Set<Marker> markers = Set(); //markers for google map
@@ -63,6 +65,22 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
     } else {
       print(result.errorMessage);
     }
+    double totalDistance = 0;
+
+    for (var i = 0; i < polylineCoordinates.length - 1; i++) {
+      totalDistance += calculateDistance(
+          polylineCoordinates[i].latitude,
+          polylineCoordinates[i].longitude,
+          polylineCoordinates[i + 1].latitude,
+          polylineCoordinates[i + 1].longitude);
+    }
+
+    print(totalDistance);
+
+    setState(() {
+      distance = totalDistance;
+    });
+
     addPolyLine(polylineCoordinates);
   }
 
@@ -76,6 +94,14 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
     );
     polylines[id] = polyline;
     setState(() {});
+  }
+
+  double calculateDistance(lat1, lon1, lat2, lon2) {
+    var p = 0.017453292519943295;
+    var a = 0.5 -
+        cos((lat2 - lat1) * p) / 2 +
+        cos(lat1 * p) * cos(lat2 * p) * (1 - cos((lon2 - lon1) * p)) / 2;
+    return 12742 * asin(sqrt(a));
   }
 
   @override
@@ -384,12 +410,12 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                     const SizedBox(height: 24.0),
                     Row(
                       children: [
-                        Icon(Icons.home, color: Colors.yellow[700]),
+                        Icon(Icons.social_distance, color: Colors.yellow[700]),
                         const SizedBox(width: 12.0),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: const [
-                            Text("Maison"),
+                            Text("location"),
                             SizedBox(height: 4.0),
                             Text(
                               "L'adresse de votre domicile",
@@ -431,6 +457,21 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
             ),
           ),
         ),
+
+        Positioned(
+          bottom: 400,
+          left: 50,
+          child: Container(
+            child: Card(
+              child: Container(
+                  padding: EdgeInsets.all(15),
+                  child: Text(
+                      "Total Distance: " + distance.toStringAsFixed(2) + " KM",
+                      style: TextStyle(
+                          fontSize: 10, fontWeight: FontWeight.bold))),
+            ),
+          ),
+        )
       ]),
     );
   }
