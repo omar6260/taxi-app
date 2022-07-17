@@ -1,4 +1,4 @@
-import 'package:firebase_core/firebase_core.dart';
+9import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:taxi_app/pages/splash.dart';
 import 'package:taxi_app/service/google_map.dart';
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'SenTaxi',
       home: SplashPage(),
     );
   }
