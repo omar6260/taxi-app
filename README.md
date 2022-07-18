@@ -1,17 +1,14 @@
 # taxi_app
 
-A new Flutter project.
+Il s'agit d'un projet open source pour créer et déployer une application de transport (Taxi-App) utilisant
+[FLUTTER](https://docs.flutter.dev) et [FIREBASE](https://docs.firebase.com) comme backend.
 
-## Getting Started
+Ceci est entièrement ouvert aux contributions car il est destiné à des fins d'apprentissage. La révision du code, les suggestions et les idées sont les bienvenues.
 
-This project is a starting point for a Flutter application.
+## Prérequis 
+Pour démarrer ce projet;
 
-A few resources to get you started if this is your first Flutter project:
+- Vous devez avoir quelques connaissances de base sur DART/FLUTTER et FIREBASE car c'est l'essentiel.
+- FOURCHE⑂ et ÉTOILE⭐️ce référentiel. Git Clone sur votre ordinateur local.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# taxi-app
+## Configuration 
