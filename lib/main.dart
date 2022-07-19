@@ -1,4 +1,4 @@
-9import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:taxi_app/pages/splash.dart';
 import 'package:taxi_app/service/google_map.dart';
