@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_google_places/flutter_google_places.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
+import 'package:google_api_headers/google_api_headers.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../model/key.dart';
+import 'package:google_maps_webservice/places.dart' as webservice;
 import 'dart:math';
 
 class GoogleMapService extends StatefulWidget {
@@ -217,9 +220,9 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
           ),
           SizedBox.expand(
             child: DraggableScrollableSheet(
-              initialChildSize: .2,
-              minChildSize: .2,
-              maxChildSize: .1,
+              initialChildSize: 0.4,
+              minChildSize: 0.30,
+              maxChildSize: 0.8,
               builder: (BuildContext c, s) => Container(
                 padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                 decoration: const BoxDecoration(
@@ -246,7 +249,111 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                           borderRadius: BorderRadius.circular(5),
                         ),
                       ),
-                    )
+                    ),
+                    // SizedBox(height: 0),
+                    Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8.0, vertical: 3.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Où aller ?",
+                              style: TextStyle(
+                                  fontSize: 20.0, fontFamily: "Brand Bold"),
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            GestureDetector(
+                              onTap: () async {
+                                var place = await PlacesAutocomplete.show(
+                                    context: context,
+                                    apiKey: googleApikey,
+                                    mode: Mode.overlay,
+                                    types: ["geocode"],
+                                    strictbounds: false,
+                                    components: [
+                                      webservice.Component(
+                                          webservice.Component.country, 'sn')
+                                    ],
+                                    //google_map_webservice package
+                                    onError: (err) {
+                                      print(err);
+                                    });
+                                if (place != null) {
+                                  setState(() {
+                                    location = place.description.toString();
+                                  });
+                                  final plist = webservice.GoogleMapsPlaces(
+                                    apiKey: keymap,
+                                    apiHeaders:
+                                        await GoogleApiHeaders().getHeaders(),
+                                    //from google_api_headers package
+                                  );
+
+                                  String placeid = place.placeId ?? "0";
+                                  final detail =
+                                      await plist.getDetailsByPlaceId(placeid);
+                                  final geometry = detail.result.geometry!;
+                                  final lat = geometry.location.lat;
+                                  final lang = geometry.location.lng;
+                                  setState(() {
+                                    endLocation = LatLng(lat, lang);
+
+                                    markers.add(Marker(
+                                      //add distination location marker
+                                      markerId:
+                                          MarkerId(endLocation.toString()),
+                                      position:
+                                          endLocation!, //position of marker
+                                      infoWindow: InfoWindow(
+                                        //popup info
+                                        title: 'Destination Point ',
+                                        snippet: 'Destination Marker',
+                                      ),
+                                      icon: BitmapDescriptor
+                                          .defaultMarker, //Icon for Marker
+                                    ));
+
+                                    getDirections();
+                                  });
+
+                                  //move map camera to selected place with animation
+                                  // mapController?.animateCamera(
+                                  //     CameraUpdate.newCameraPosition(CameraPosition(
+                                  //         target: newlatlang, zoom: 17)));
+
+                                }
+                              },
+                              child: Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(5.0),
+                                    boxShadow: const [
+                                      BoxShadow(
+                                        color: Colors.grey,
+                                        blurRadius: 10.0,
+                                        spreadRadius: 0.2,
+                                        offset: Offset(0.3, 0.3),
+                                      ),
+                                    ],
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(12.0),
+                                    child: Row(
+                                      children: [
+                                        Icon(Icons.search,
+                                            color: Colors.yellow[700]),
+                                        const SizedBox(width: 10.0),
+                                        Text(location),
+                                      ],
+                                    ),
+                                  )),
+                            ),
+                            const SizedBox(height: 24.0),
+                          ],
+                        )),
                   ],
                 ),
               ),
