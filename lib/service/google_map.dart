@@ -17,6 +17,7 @@ class GoogleMapService extends StatefulWidget {
 class _GoogleMapServiceState extends State<GoogleMapService> {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   bool drawerOpen = true;
+  String? Location;
 
   String googleApikey = keymap;
   GoogleMapController? mapController; //contrller for Google map
@@ -218,6 +219,7 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
               });
             },
           ),
+
           SizedBox.expand(
             child: DraggableScrollableSheet(
               initialChildSize: 0.4,
@@ -354,43 +356,92 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(12.3),
-                      child: Column(
+                      padding: const EdgeInsets.all(10),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(10),
-                                child: Image.asset(
-                                  "assets/logo1.png",
-                                  width: 59,
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: Image.asset(
+                              "assets/logo1.png",
+                              width: 59,
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(left: 10.0, top: 5.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: const [
+                                Text(
+                                  "classique",
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold),
                                 ),
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 10.0, top: 5.0),
-                                child: Column(
+                                Text(
+                                  "700 F",
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 50.0),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: Image.asset(
+                                    "assets/logo1.png",
+                                    width: 59,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 10.0, top: 5.0),
+                                  child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: const [
                                       Text(
-                                        "Classique",
+                                        "Confort",
                                         style: TextStyle(
                                             fontSize: 16,
                                             fontWeight: FontWeight.bold),
                                       ),
                                       Text(
-                                        "700 F",
-                                        style: const TextStyle(
+                                        "1000 F",
+                                        style: TextStyle(
                                             fontSize: 16,
                                             fontWeight: FontWeight.bold),
                                       ),
-                                    ]),
-                              )
-                            ],
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ],
+                      ),
+                    ),
+                    SizedBox(height: 9),
+                    Padding(
+                      padding: const EdgeInsets.all(50),
+                      child: InkWell(
+                        onTap: () {},
+                        child: Container(
+                          width: 234,
+                          height: 50,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                            color: Colors.yellow[700],
+                          ),
+                        ),
                       ),
                     ),
                   ],
