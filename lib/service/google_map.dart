@@ -222,7 +222,7 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
 
           SizedBox.expand(
             child: DraggableScrollableSheet(
-              initialChildSize: 0.4,
+              initialChildSize: 0.5,
               minChildSize: 0.40,
               maxChildSize: 0.6,
               builder: (BuildContext c, s) => Container(
@@ -355,81 +355,87 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(10),
-                            child: Image.asset(
-                              "assets/logo1.png",
-                              width: 59,
+                    GestureDetector(
+                      onTap: () {
+                        print("click");
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(10),
+                              child: Image.asset(
+                                "assets/logo1.png",
+                                width: 59,
+                              ),
                             ),
-                          ),
-                          Padding(
-                            padding:
-                                const EdgeInsets.only(left: 10.0, top: 5.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
-                                Text(
-                                  "classique",
-                                  style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                Text(
-                                  "700 F",
-                                  style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 50.0),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(10),
-                                  child: Image.asset(
-                                    "assets/logo1.png",
-                                    width: 59,
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 10.0, top: 5.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: const [
+                                  Text(
+                                    "classique",
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold),
                                   ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 10.0, top: 5.0),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: const [
-                                      Text(
-                                        "Confort",
-                                        style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        "1000 F",
-                                        style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ],
+                                  Text(
+                                    "700 F",
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
+                            Padding(
+                              padding: const EdgeInsets.only(left: 95.0),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(10),
+                                    child: Image.asset(
+                                      "assets/logo1.png",
+                                      width: 59,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 10.0, top: 5.0),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: const [
+                                        Text(
+                                          "Confort",
+                                          style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        Text(
+                                          "1000 F",
+                                          style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
+
                     Padding(
-                      padding: const EdgeInsets.all(40),
+                      padding: const EdgeInsets.all(75),
                       child: InkWell(
                         onTap: () {
                           print("it's ok");

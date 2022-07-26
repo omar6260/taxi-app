@@ -18,7 +18,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
       body: OnBoard(
         pageController: _pageController,
         // Either Provide onSkip Callback or skipButton Widget to handle skip state
-        onSkip: () {},
+        onSkip: () {
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (context) => const LoginScreen()));
+        },
         // Either Provide onDone Callback or nextButton Widget to handle done state
         onDone: () {
           //
