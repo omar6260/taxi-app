@@ -223,8 +223,8 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
           SizedBox.expand(
             child: DraggableScrollableSheet(
               initialChildSize: 0.4,
-              minChildSize: 0.30,
-              maxChildSize: 0.8,
+              minChildSize: 0.40,
+              maxChildSize: 0.6,
               builder: (BuildContext c, s) => Container(
                 padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                 decoration: const BoxDecoration(
@@ -428,11 +428,12 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                         ],
                       ),
                     ),
-                    SizedBox(height: 9),
                     Padding(
-                      padding: const EdgeInsets.all(50),
+                      padding: const EdgeInsets.all(40),
                       child: InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          print("it's ok");
+                        },
                         child: Container(
                           width: 234,
                           height: 50,
@@ -440,6 +441,14 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30),
                             color: Colors.yellow[700],
+                          ),
+                          child: Text(
+                            "Commandez",
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
                           ),
                         ),
                       ),
