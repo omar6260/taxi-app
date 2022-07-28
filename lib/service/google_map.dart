@@ -206,7 +206,7 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
             initialCameraPosition: CameraPosition(
               //innital position in map
               target: startLocation, //initial position
-              zoom: 14.4746, //initial zoom level
+              zoom: 16.0, //initial zoom level
             ),
             //polylines
             markers: markers, //markers to show on map
@@ -499,6 +499,9 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                   ),
                 )),
           ),
+            Positioned(
+              child: child
+            ),
 
           // Positioned(
           //   bottom: 400,
