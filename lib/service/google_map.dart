@@ -222,9 +222,9 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
 
           SizedBox.expand(
             child: DraggableScrollableSheet(
-              initialChildSize: 0.5,
+              initialChildSize: 0.4,
               minChildSize: 0.40,
-              maxChildSize: 0.6,
+              maxChildSize: 0.8,
               builder: (BuildContext c, s) => Container(
                 padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                 decoration: const BoxDecoration(
@@ -432,33 +432,7 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                           ],
                         ),
                       ),
-                    ),
-
-                    Padding(
-                      padding: const EdgeInsets.all(75),
-                      child: InkWell(
-                        onTap: () {
-                          print("it's ok");
-                        },
-                        child: Container(
-                          width: 234,
-                          height: 50,
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            color: Colors.yellow[700],
-                          ),
-                          child: Text(
-                            "Commandez",
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
+                    ), 
                   ],
                 ),
               ),
@@ -499,9 +473,40 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                   ),
                 )),
           ),
-            Positioned(
-              child: child
+          Positioned(
+            bottom: 15.0,
+            left: 70.0,
+            right: 70.0,
+            child: AnimatedSize(
+              curve: Curves.bounceIn,
+              duration: const Duration(milliseconds: 160),
+              child: Container(
+                height: 50,
+                child: InkWell(
+                  onTap: () {
+                    print("it's ok");
+                  },
+                  child: Container(
+                    width: 234,
+                    height: 50,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color: Colors.yellow[700],
+                    ),
+                    child: Text(
+                      "Commandez",
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 25,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ),
+          ),
 
           // Positioned(
           //   bottom: 400,

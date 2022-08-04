@@ -5,6 +5,8 @@ Il s'agit d'un projet open source pour créer et déployer une application de tr
 
 Ceci est entièrement ouvert aux contributions car il est destiné à des fins d'apprentissage. La révision du code, les suggestions et les idées sont les bienvenues.
 
+## Demo
+
 ## Prérequis 
 Pour démarrer ce projet;
 
