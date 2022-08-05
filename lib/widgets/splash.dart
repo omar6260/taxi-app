@@ -3,9 +3,9 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:taxi_app/pages/login.dart';
-import 'package:taxi_app/pages/onboarding.dart';
-import 'package:taxi_app/service/google_map.dart';
+import 'package:taxi_app/widgets/login.dart';
+import 'package:taxi_app/widgets/onboarding.dart';
+import 'package:taxi_app/pages/google_map.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
