@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_onboard/flutter_onboard.dart';
-import 'package:taxi_app/pages/login.dart';
-import 'package:taxi_app/pages/splash.dart';
+import 'package:taxi_app/widgets/login.dart';
+import 'package:taxi_app/widgets/splash.dart';
 
 class OnboardingPage extends StatefulWidget {
   const OnboardingPage({Key? key}) : super(key: key);
