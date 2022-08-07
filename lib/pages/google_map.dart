@@ -18,7 +18,7 @@ class GoogleMapService extends StatefulWidget {
 class _GoogleMapServiceState extends State<GoogleMapService> {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   bool drawerOpen = true;
-  // String? Location;
+  String? Location;
 
   String googleApikey = keymap;
   GoogleMapController? mapController; //contrller for Google map
@@ -39,7 +39,6 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
   void initState() {
     getUserPosition().then((position) {
       startLocation = LatLng(position.latitude, position.longitude);
-
       markers.add(Marker(
         //add start location marker
         markerId: MarkerId(startLocation.toString()),
@@ -116,8 +115,6 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
     addPolyLine(polylineCoordinates);
   }
 
-//  https://maps.googleapis.com/maps/api/distancematrix/json?destinations=14.6629438,-17.4374803&origins=14.7401733,-17.4604&key=AIzaSyDAMs9m7yozp_jsfJI9jaSo5bR2eBtBPWU
-
   addPolyLine(List<LatLng> polylineCoordinates) {
     PolylineId id = PolylineId("poly");
     Polyline polyline = Polyline(
@@ -160,23 +157,23 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                         height: 65.0,
                         width: 65.0,
                       ),
-                      const SizedBox(
+                      SizedBox(
                         width: 16.0,
                       ),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Text(
+                          Text(
                             "nom d'utilisateur",
                             style: TextStyle(
                                 fontSize: 16.0, fontFamily: "Oumar Fall"),
                           ),
-                          const SizedBox(
+                          SizedBox(
                             height: 6,
                           ),
                           GestureDetector(
                             onTap: () {},
-                            child: const Text("Visiter le profil"),
+                            child: Text("Visiter le profil"),
                           ),
                         ],
                       )
@@ -184,23 +181,23 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                   ),
                 ),
               ),
-              const Divider(),
+              Divider(),
 
-              const SizedBox(
+              SizedBox(
                 height: 12.0,
               ),
 
               //Drawer Body Contrller
               GestureDetector(
                 onTap: () {},
-                child: const ListTile(
+                child: ListTile(
                   leading: Icon(Icons.history),
                   title: Text("Historique"),
                 ),
               ),
               GestureDetector(
                 onTap: () {},
-                child: const ListTile(
+                child: ListTile(
                   leading: Icon(Icons.person),
                   title: Text(
                     "Visiter le profil",
@@ -210,7 +207,7 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
               ),
               GestureDetector(
                 onTap: () {},
-                child: const ListTile(
+                child: ListTile(
                   leading: Icon(Icons.info),
                   title: Text(
                     "Apropos",
@@ -220,7 +217,7 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
               ),
               GestureDetector(
                 onTap: () {},
-                child: const ListTile(
+                child: ListTile(
                   leading: Icon(Icons.logout),
                   title: Text(
                     "Se déconnecter",
@@ -244,7 +241,7 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                     initialCameraPosition: CameraPosition(
                       //innital position in map
                       target: startLocation, //initial position
-                      zoom: 13.0, //initial zoom level
+                      zoom: 16.0, //initial zoom level
                     ),
                     //polylines
                     markers: markers, //markers to show on map
@@ -260,12 +257,12 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
 
                   SizedBox.expand(
                     child: DraggableScrollableSheet(
-                      initialChildSize: 0.5,
+                      initialChildSize: 0.4,
                       minChildSize: 0.40,
-                      maxChildSize: 0.6,
+                      maxChildSize: 0.8,
                       builder: (BuildContext c, s) => Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 15, vertical: 10),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                         decoration: const BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.only(
@@ -298,7 +295,7 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  const Text(
+                                  Text(
                                     "Où aller ?",
                                     style: TextStyle(
                                         fontSize: 20.0,
@@ -353,7 +350,7 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                                                 endLocation.toString()),
                                             position:
                                                 endLocation!, //position of marker
-                                            infoWindow: const InfoWindow(
+                                            infoWindow: InfoWindow(
                                               //popup info
                                               title: 'Destination Point ',
                                               snippet: 'Destination Marker',
@@ -367,12 +364,10 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                                         });
 
                                         //move map camera to selected place with animation
-                                        mapController?.animateCamera(
-                                            CameraUpdate.newCameraPosition(
-                                                CameraPosition(
-                                                    target: endLocation!,
-                                                    zoom: 13,
-                                                    bearing: 10)));
+                                        // mapController?.animateCamera(
+                                        //     CameraUpdate.newCameraPosition(CameraPosition(
+                                        //         target: newlatlang, zoom: 17)));
+
                                       }
                                     },
                                     child: Container(
@@ -489,32 +484,6 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                                 ),
                               ),
                             ),
-
-                            Padding(
-                              padding: const EdgeInsets.all(75),
-                              child: InkWell(
-                                onTap: () {
-                                  print("it's ok");
-                                },
-                                child: Container(
-                                  width: 234,
-                                  height: 50,
-                                  alignment: Alignment.center,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(30),
-                                    color: Colors.yellow[700],
-                                  ),
-                                  child: const Text(
-                                    "Commandez",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
                           ],
                         ),
                       ),
@@ -555,9 +524,40 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                           ),
                         )),
                   ),
-                  // Positioned(
-                  //   child: child
-                  // ),
+                  Positioned(
+                    bottom: 15.0,
+                    left: 70.0,
+                    right: 70.0,
+                    child: AnimatedSize(
+                      curve: Curves.bounceIn,
+                      duration: const Duration(milliseconds: 160),
+                      child: Container(
+                        height: 50,
+                        child: InkWell(
+                          onTap: () {
+                            print("it's ok");
+                          },
+                          child: Container(
+                            width: 234,
+                            height: 50,
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              color: Colors.yellow[700],
+                            ),
+                            child: Text(
+                              "Commandez",
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 25,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
 
                   // Positioned(
                   //   bottom: 400,
@@ -565,14 +565,11 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                   //   child: Container(
                   //     child: Card(
                   //       child: Container(
-                  //           padding: const EdgeInsets.all(15),
+                  //           padding: EdgeInsets.all(15),
                   //           child: Text(
-                  //               "Total Distance: " +
-                  //                   distance.toStringAsFixed(2) +
-                  //                   " KM",
-                  //               style: const TextStyle(
-                  //                   fontSize: 10,
-                  //                   fontWeight: FontWeight.bold))),
+                  //               "Total Distance: " + distance.toStringAsFixed(2) + " KM",
+                  //               style: TextStyle(
+                  //                   fontSize: 10, fontWeight: FontWeight.bold))),
                   //     ),
                   //   ),
                   // )
