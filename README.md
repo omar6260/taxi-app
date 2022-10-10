@@ -11,11 +11,7 @@ Ceci est entièrement ouvert aux contributions car il est destiné à des fins d
 Pour démarrer ce projet;
 
 - Vous devez avoir quelques connaissances de base sur DART/FLUTTER et FIREBASE car c'est l'essentiel.
-<<<<<<< HEAD
 - Forg et ÉTOILE⭐️ce référentiel. Git Clone sur votre ordinateur local.
-=======
-- Forks⑂ et like⭐️ce référentiel. Git Clone sur votre ordinateur local.
->>>>>>> 9e98e3c1b0dcc88e715b8696e7956ca526a33fee
 
 ## Configuration 
 - Tout d'abord, accédez à[GoogleMap](https://console.cloud.google.com/)pour activer Map SDK et obtenir la clé API. Créez le nouveau projet et accédez à Google Maps Platform :
