@@ -18,6 +18,7 @@ class GoogleMapService extends StatefulWidget {
 class _GoogleMapServiceState extends State<GoogleMapService> {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   bool drawerOpen = true;
+  // ignore: non_constant_identifier_names
   String? Location;
 
   String googleApikey = keymap;
@@ -236,19 +237,19 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
               return SizedBox.expand(
                 child: Stack(children: [
                   GoogleMap(
-                    //Map widget from google_maps_flutter package
-                    zoomGesturesEnabled: true, //enable Zoom in, out on map
+                    
+                    zoomGesturesEnabled: true, 
                     initialCameraPosition: CameraPosition(
-                      //innital position in map
-                      target: startLocation, //initial position
-                      zoom: 16.0, //initial zoom level
+                      
+                      target: startLocation, 
+                      zoom: 16.0, 
                     ),
                     //polylines
                     markers: markers, //markers to show on map
                     polylines: Set<Polyline>.of(polylines.values),
                     mapType: MapType.normal, //map type
                     onMapCreated: (controller) {
-                      //method called when map is created
+                      
                       setState(() {
                         mapController = controller;
                       });
