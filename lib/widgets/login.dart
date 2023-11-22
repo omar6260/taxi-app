@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -50,7 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
           prefixIcon: Icon(Icons.mail, color: Colors.yellow[700]),
-          contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+          contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
           hintText: "Email",
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
@@ -63,13 +62,14 @@ class _LoginScreenState extends State<LoginScreen> {
         controller: passwordController,
         obscureText: true,
         validator: (value) {
-          RegExp regex = new RegExp(r'^.{6,}$');
+          RegExp regex = RegExp(r'^.{6,}$');
           if (value!.isEmpty) {
             return ("Le mot de passe est nécessaire pour se connecter");
           }
           if (!regex.hasMatch(value)) {
             return ("Entre un mot pass valide (Min. 6 Caractére)");
           }
+          return null;
         },
         onSaved: (value) {
           passwordController.text = value!;
@@ -77,7 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
         textInputAction: TextInputAction.done,
         decoration: InputDecoration(
           prefixIcon: Icon(Icons.vpn_key, color: Colors.yellow[700]),
-          contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+          contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
           hintText: "Mot de passe",
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
@@ -89,12 +89,12 @@ class _LoginScreenState extends State<LoginScreen> {
       borderRadius: BorderRadius.circular(30),
       color: Colors.yellow[700],
       child: MaterialButton(
-          padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+          padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
           minWidth: MediaQuery.of(context).size.width,
           onPressed: () {
             signIn(emailController.text, passwordController.text);
           },
-          child: Text(
+          child: const Text(
             "Connexion",
             textAlign: TextAlign.center,
             style: TextStyle(
@@ -169,7 +169,7 @@ class _LoginScreenState extends State<LoginScreen> {
             .then((uid) => {
                   Fluttertoast.showToast(msg: "Inscription réussi"),
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => GoogleMapService())),
+                      builder: (context) => const GoogleMapService())),
                 });
       } on FirebaseAuthException catch (error) {
         switch (error.code) {
