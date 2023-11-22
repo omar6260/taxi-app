@@ -117,7 +117,7 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
   }
 
   addPolyLine(List<LatLng> polylineCoordinates) {
-    PolylineId id = PolylineId("poly");
+    PolylineId id = const PolylineId("poly");
     Polyline polyline = Polyline(
       polylineId: id,
       color: Colors.deepPurpleAccent,
@@ -150,7 +150,7 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
               SizedBox(
                 height: 165.0,
                 child: DrawerHeader(
-                  decoration: BoxDecoration(color: Colors.white),
+                  decoration: const BoxDecoration(color: Colors.white),
                   child: Row(
                     children: [
                       Image.asset(
@@ -158,23 +158,23 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                         height: 65.0,
                         width: 65.0,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 16.0,
                       ),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
+                          const Text(
                             "nom d'utilisateur",
                             style: TextStyle(
                                 fontSize: 16.0, fontFamily: "Oumar Fall"),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 6,
                           ),
                           GestureDetector(
                             onTap: () {},
-                            child: Text("Visiter le profil"),
+                            child: const Text("Visiter le profil"),
                           ),
                         ],
                       )
@@ -182,23 +182,23 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                   ),
                 ),
               ),
-              Divider(),
+              const Divider(),
 
-              SizedBox(
+              const SizedBox(
                 height: 12.0,
               ),
 
               //Drawer Body Contrller
               GestureDetector(
                 onTap: () {},
-                child: ListTile(
+                child: const ListTile(
                   leading: Icon(Icons.history),
                   title: Text("Historique"),
                 ),
               ),
               GestureDetector(
                 onTap: () {},
-                child: ListTile(
+                child: const ListTile(
                   leading: Icon(Icons.person),
                   title: Text(
                     "Visiter le profil",
@@ -208,7 +208,7 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
               ),
               GestureDetector(
                 onTap: () {},
-                child: ListTile(
+                child: const ListTile(
                   leading: Icon(Icons.info),
                   title: Text(
                     "Apropos",
@@ -218,7 +218,7 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
               ),
               GestureDetector(
                 onTap: () {},
-                child: ListTile(
+                child: const ListTile(
                   leading: Icon(Icons.logout),
                   title: Text(
                     "Se déconnecter",
@@ -263,7 +263,7 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                       maxChildSize: 0.8,
                       builder: (BuildContext c, s) => Container(
                         padding:
-                            EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                            const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                         decoration: const BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.only(
@@ -296,7 +296,7 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
+                                  const Text(
                                     "Où aller ?",
                                     style: TextStyle(
                                         fontSize: 20.0,
@@ -330,7 +330,7 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                                         final plist =
                                             webservice.GoogleMapsPlaces(
                                           apiKey: keymap,
-                                          apiHeaders: await GoogleApiHeaders()
+                                          apiHeaders: await const GoogleApiHeaders()
                                               .getHeaders(),
                                           //from google_api_headers package
                                         );
@@ -351,7 +351,7 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                                                 endLocation.toString()),
                                             position:
                                                 endLocation!, //position of marker
-                                            infoWindow: InfoWindow(
+                                            infoWindow: const InfoWindow(
                                               //popup info
                                               title: 'Destination Point ',
                                               snippet: 'Destination Marker',
@@ -417,13 +417,13 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                                         width: 59,
                                       ),
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(
+                                    const Padding(
+                                      padding: EdgeInsets.only(
                                           left: 10.0, top: 5.0),
                                       child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
-                                        children: const [
+                                        children: [
                                           Text(
                                             "classique",
                                             style: TextStyle(
@@ -454,13 +454,13 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                                               width: 59,
                                             ),
                                           ),
-                                          Padding(
-                                            padding: const EdgeInsets.only(
+                                          const Padding(
+                                            padding: EdgeInsets.only(
                                                 left: 10.0, top: 5.0),
                                             child: Column(
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
-                                              children: const [
+                                              children: [
                                                 Text(
                                                   "Confort",
                                                   style: TextStyle(
@@ -532,7 +532,7 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                     child: AnimatedSize(
                       curve: Curves.bounceIn,
                       duration: const Duration(milliseconds: 160),
-                      child: Container(
+                      child: SizedBox(
                         height: 50,
                         child: InkWell(
                           onTap: () {
@@ -546,9 +546,9 @@ class _GoogleMapServiceState extends State<GoogleMapService> {
                               borderRadius: BorderRadius.circular(30),
                               color: Colors.yellow[700],
                             ),
-                            child: Text(
+                            child: const Text(
                               "Commandez",
-                              style: const TextStyle(
+                              style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 25,

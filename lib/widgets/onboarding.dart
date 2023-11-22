@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_onboard/flutter_onboard.dart';
 import 'package:taxi_app/widgets/login.dart';
-import 'package:taxi_app/widgets/splash.dart';
 
 class OnboardingPage extends StatefulWidget {
   const OnboardingPage({Key? key}) : super(key: key);
@@ -43,14 +42,14 @@ class _OnboardingPageState extends State<OnboardingPage> {
           width: 100,
           inactiveColor: Colors.yellow,
           activeColor: Colors.yellow[700],
-          inactiveSize: Size(8, 8),
-          activeSize: Size(12, 12),
+          inactiveSize: const Size(8, 8),
+          activeSize: const Size(12, 12),
         ),
         // Either Provide onSkip Callback or skipButton Widget to handle skip state
         skipButton: TextButton(
           onPressed: () {
             Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (context) => LoginScreen()));
+                MaterialPageRoute(builder: (context) => const LoginScreen()));
           },
           child: Text(
             "Passer",
